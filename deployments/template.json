@@ -1,6 +1,10 @@
 {
+    "variables": {
+        "build_number": "{{env `CIRCLE_BUILD_NUM`}}"
+    },
     "builders": [
         {
+            "snapshot_name": "platzi-demo-{{user `build_number`}}",
             "type": "digitalocean",
             "image": "coreos-stable",
             "region": "ams3",
