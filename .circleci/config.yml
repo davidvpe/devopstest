@@ -64,19 +64,21 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
+
+
 workflows:
-  build-and-deploy-qa:
-    jobs:
-      - build
-      - deploy-qa:
-        filters:
-          branches:
-          only: /feature_.*/
-          requires:
-            - build
-      - deploy-prod:
-        filters:
-          branches:
-            only: master
-          requires:
-            - build
+  central_flow:
+      jobs:
+        - build
+        - deploy-qa:
+            requires:
+              - build
+            filters:
+              branches:
+                only: /feature_.*/
+        - deploy-prod:
+            requires:
+              - build
+            filters:
+              branches:
+                only: master
