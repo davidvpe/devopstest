@@ -38,7 +38,7 @@ jobs:
 
       - run:
           name: Docker Deployment
-          command: sh deployments/qa.sh
+          command: sudo sh deployments/qa.sh
 
     branches:
       only: /feature_.*/
