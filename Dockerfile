@@ -6,7 +6,7 @@ WORKDIR /app
 
 ADD package.json /app/
 
-RUN npm install
+RUN yarn install
 
 ADD . /app
 
