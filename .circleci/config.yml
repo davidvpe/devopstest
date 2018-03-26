@@ -67,6 +67,7 @@ jobs:
 
 
 workflows:
+  version: 2
   central_flow:
       jobs:
         - build
