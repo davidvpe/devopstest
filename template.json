@@ -1,0 +1,21 @@
+{
+    "builders": [
+        {
+            "type": "digitalocean",
+            "image": "coreos-stable",
+            "region": "ams3",
+            "size": "512mb",
+            "ssh_username":"core"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "inline": [
+                "git clone https://github.com/davidvpe/devopstest.git",
+                "cd devopstest",
+                "docker build -t platzi ."
+            ]
+        }
+    ]
+}
