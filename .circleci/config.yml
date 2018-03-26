@@ -26,7 +26,6 @@ jobs:
 
       # run tests!
       - run: yarn test
-
   deploy-qa:
     docker:
       # specify the version you desire here
@@ -73,14 +72,11 @@ workflows:
         filters:
           branches:
           only: /feature_.*/
-        requires:
-          - build
-  build-and-deploy-prod:
-    jobs:
-      - build
+          requires:
+            - build
       - deploy-prod:
         filters:
           branches:
             only: master
-        requires:
-          - build
+          requires:
+            - build
