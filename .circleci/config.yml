@@ -52,6 +52,9 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
+      - add_ssh_keys:
+        fingerprints:
+          - "f6:49:13:92:b7:5b:48:12:93:36:ac:07:91:8b:8c:a1"
       - run:
           name: deploy to prod
           command: sh deployments/prod.sh
