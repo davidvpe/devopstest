@@ -5,6 +5,9 @@ unzip /tmp/terraform.zip -d ~/bin
 
 packer validate deployments/template.json &&
 packer build deployments/template.json &&
+
+ls -al ~/bin
+
 export TF_VAR_image_id=$(curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer $DIGITALOCEAN_API_TOKEN" "https://api.digitalocean.com/v2/images?private=true" | jq ."images[] | select(.name == \"platzi-demo-$CIRCLE_BUILD_NUM\") | .id")
 
 echo "Got the image id of the new digital ocean image"
