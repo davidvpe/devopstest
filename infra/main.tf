@@ -1,7 +1,4 @@
 # Configure the DigitalOcean Provider
-provider "digitalocean" {
-  token = "$DIGITALOCEAN_TOKEN"
-}
 
 resource "digitalocean_loadbalancer" "platzi-lb" {
   name = "platzi-lb"
@@ -28,13 +25,22 @@ resource "digitalocean_tag" "platzi_tag" {
 }
 
 resource "digitalocean_droplet" "platzi-droplet" {
-  count     = 5
-  image     = "32921512"
+  count     = 2
+  image     = "${var.image_id}"
   name      = "platzi-demo-v2"
   region    = "ams3"
   size      = "512mb"
   ssh_keys  = [19435667]
   tags      = ["${digitalocean_tag.platzi_tag.id}"]
+
+  lifecycle {
+    create_before_destroy = true
+  }
+  #Digital Ocean no deja saber el estado de las compus en el load balancer
+  provisioner "local-exec" {
+    command = "sleep 160 && curl ${self.ipv4_address}:3000"
+  }
+
   user_data = <<EOF
 #cloud-config
 coreos:
