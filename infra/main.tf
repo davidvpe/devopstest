@@ -20,7 +20,7 @@ resource "digitalocean_loadbalancer" "platzi-lb" {
 }
 
 resource "digitalocean_tag" "platzi" {
-  name = "platzi-fun"
+  name = "platzi"
 }
 
 resource "digitalocean_droplet" "platzi-droplet" {
@@ -30,14 +30,14 @@ resource "digitalocean_droplet" "platzi-droplet" {
   region    = "ams3" 
   size      = "512mb"
   ssh_keys  = [19435667]
-  tags      = ["${digitalocean_tag.platzi.name}"]
+  tags      = ["${digitalocean_tag.platzi.id}"]
 
   lifecycle {
     create_before_destroy = true
   }
 
   provisioner "local-exec" {
-    command = "sleep 160 && curl ${self.ipv4_address}:3000"
+    command = "sleep 120 && curl ${self.ipv4_address}:3000"
   }
 
   user_data = <<EOF
