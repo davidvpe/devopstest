@@ -16,7 +16,7 @@ terraform init -input=false &&
 terraform apply -input=false -auto-approve &&  cd .. &&
 git config --global user.email "circleci@awesomeMail.com" &&
 git config --global user.name "Circle CI Script" &&
-git add infra && git commit -m 'Deployed $CIRCLE_BUILD NUM [skip ci]' &&
+git add infra && git commit -m 'Deployed $CIRCLE_BUILD_NUM [skip ci]' &&
 git push origin master &&
 echo "Deployed and saved!" &&
 echo "Now deleting the image previously created" &&
