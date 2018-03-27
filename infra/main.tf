@@ -30,7 +30,7 @@ resource "digitalocean_droplet" "platzi-droplet" {
   region    = "ams3" 
   size      = "512mb"
   ssh_keys  = [19435667]
-  tags      = ["${digitalocean_tag.platzi.name"]
+  tags      = ["${digitalocean_tag.platzi.name}"]
 
   lifecycle {
     create_before_destroy = true
