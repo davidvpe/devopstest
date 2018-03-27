@@ -1,7 +1,7 @@
 wget -O /tmp/packer.zip https://releases.hashicorp.com/packer/1.2.1/packer_1.2.1_linux_amd64.zip?_ga=2.172604963.1433869664.1522083868-384145405.1522083868
 wget -O /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.11.5/terraform_0.11.5_linux_amd64.zip?_ga=2.42370918.2146529047.1522086131-369822613.1522086131
-unzip /tmp/packer.zip -d /bin
-unzip /tmp/terraform.zip -d /bin
+sudo unzip /tmp/packer.zip -d /bin
+sudo unzip /tmp/terraform.zip -d /bin
 
 packer validate deployments/template.json &&
 packer build deployments/template.json &&
