@@ -19,7 +19,7 @@ resource "digitalocean_loadbalancer" "platzi-lb" {
   droplet_tag = "${digitalocean_tag.platzi_tag.name}"
 }
 
-resource "digitalocean_tag" "platzi_tag" {
+resource "digitalocean_tag" "platzi" {
   name = "platzi-fun"
 }
 
@@ -30,7 +30,7 @@ resource "digitalocean_droplet" "platzi-droplet" {
   region    = "ams3" 
   size      = "512mb"
   ssh_keys  = [19435667]
-  tags      = ["${digitalocean_tag.platzi_tag.id}"]
+  tags      = ["${digitalocean_tag.platzi.id}"]
 
   lifecycle {
     create_before_destroy = true
