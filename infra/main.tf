@@ -29,7 +29,7 @@ resource "digitalocean_droplet" "platzi-droplet" {
   name      = "platzi-demo-v2"
   region    = "ams3" 
   size      = "512mb"
-  ssh_keys  = [s]
+  ssh_keys  = [19435667]
   tags      = ["${digitalocean_tag.platzi_tag.id}"]
 
   lifecycle {
