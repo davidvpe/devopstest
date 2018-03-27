@@ -16,7 +16,7 @@ resource "digitalocean_loadbalancer" "platzi-lb" {
     path = "/"
   }
 
-  droplet_tag = "${digitalocean_tag.platzi_tag.name}"
+  droplet_tag = "${digitalocean_tag.platzi.name}"
 }
 
 resource "digitalocean_tag" "platzi" {
